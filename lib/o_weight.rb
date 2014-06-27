@@ -66,7 +66,7 @@ class OWeight
 end
 
 OWeight::UNITS_CONVERSION.keys.each do |unit|
-  Fixnum.class_eval do
+  Numeric.class_eval do
     define_method("to_#{unit}") do
       OWeight.new(value: self, unit: unit)
     end
