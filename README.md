@@ -1,5 +1,7 @@
 # OWeight
 
+![Serious logo here](/assets/logo.jpg?raw=true "This is totally related. Word.")
+
 Olistik version of a weight related PORO.
 
 ## Installation
