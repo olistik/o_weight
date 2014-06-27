@@ -39,3 +39,7 @@ puts w2 # 10003.0 gram
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+## Not testing and I know it
+
+![Not testing and I know it](/assets/not-testing-and-I-know-it.jpg?raw=true "Hate me.")
