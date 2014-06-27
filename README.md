@@ -1,12 +1,12 @@
 # OWeight
 
-TODO: Write a gem description
+Olistik version of a weight related PORO.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'o_weight'
+    gem 'o_weight', git: 'https://github.com/olistik/o_weight.git'
 
 And then execute:
 
@@ -18,7 +18,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'o_weight'
+w1 = OWeight.new(value: 3)
+puts w1 # 3.0 gram
+puts w1 + 5 # 8.0 gram
+puts w1.to_unit(:dekagram) # 0.3 dekagram
+puts 10.to_kilogram # 10.0 kilogram
+w2 = 3.to_gram + 10.to_kilogram
+puts w2 # 10003.0 gram
+(6.to_kilogram / 4).to_s # => "1.5 kilogram"
+```
 
 ## Contributing
 
