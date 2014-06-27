@@ -1,4 +1,6 @@
 require "o_weight/version"
+require 'bigdecimal'
+require 'bigdecimal/util'
 
 class OWeight
   UNITS_CONVERSION = {
@@ -12,14 +14,6 @@ class OWeight
     ton: 1000000.to_d
   }
 
-  UNITS_CONVERSION.keys.each do |unit|
-    Fixnum.class_eval do
-      define_method("to_#{unit}") do
-        OWeight.new(value: self, unit: unit)
-      end
-    end
-  end
-
   attr_accessor :value, :unit
 
   def initialize(value:, unit: :gram)
@@ -28,7 +22,7 @@ class OWeight
   end
 
   def to_s
-    "#{value} #{formatted_unit}"
+    "#{value.to_f} #{formatted_unit}"
   end
 
   def to_unit(dest_unit)
@@ -53,7 +47,7 @@ class OWeight
 
   private
     def formatted_unit
-      I18n.t("weight.units.#{unit}")
+      defined?(I18n) ? I18n.t("weight.units.#{unit}") : unit
     end
 
     def convert_operand(operand)
@@ -69,4 +63,12 @@ class OWeight
       new_value = self.value.send(operator, operand.value)
       self.class.new(value: new_value, unit: unit)
     end
+end
+
+OWeight::UNITS_CONVERSION.keys.each do |unit|
+  Fixnum.class_eval do
+    define_method("to_#{unit}") do
+      OWeight.new(value: self, unit: unit)
+    end
+  end
 end
