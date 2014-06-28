@@ -34,14 +34,16 @@
           <h1>
 <a name="oweight" class="anchor" href="#oweight"><span class="octicon octicon-link"></span></a>OWeight</h1>
 
-<p>TODO: Write a gem description</p>
+<p><img src="/assets/logo.jpg?raw=true" alt="Serious logo here" title="This is totally related. Word."></p>
+
+<p>Olistik version of a weight related PORO.</p>
 
 <h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <p>Add this line to your application's Gemfile:</p>
 
-<pre><code>gem 'o_weight'
+<pre><code>gem 'o_weight', git: 'https://github.com/olistik/o_weight.git'
 </code></pre>
 
 <p>And then execute:</p>
@@ -57,7 +59,16 @@
 <h2>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<p>TODO: Write usage instructions here</p>
+<div class="highlight highlight-ruby"><pre><span class="nb">require</span> <span class="s1">'o_weight'</span>
+<span class="n">w1</span> <span class="o">=</span> <span class="no">OWeight</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">value</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">w1</span> <span class="c1"># 3.0 gram</span>
+<span class="nb">puts</span> <span class="n">w1</span> <span class="o">+</span> <span class="mi">5</span> <span class="c1"># 8.0 gram</span>
+<span class="nb">puts</span> <span class="n">w1</span><span class="o">.</span><span class="n">to_unit</span><span class="p">(</span><span class="ss">:dekagram</span><span class="p">)</span> <span class="c1"># 0.3 dekagram</span>
+<span class="nb">puts</span> <span class="mi">10</span><span class="o">.</span><span class="n">to_kilogram</span> <span class="c1"># 10.0 kilogram</span>
+<span class="n">w2</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="n">to_gram</span> <span class="o">+</span> <span class="mi">10</span><span class="o">.</span><span class="n">to_kilogram</span>
+<span class="nb">puts</span> <span class="n">w2</span> <span class="c1"># 10003.0 gram</span>
+<span class="p">(</span><span class="mi">6</span><span class="o">.</span><span class="n">to_kilogram</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span> <span class="c1"># =&gt; "1.5 kilogram"</span>
+</pre></div>
 
 <h2>
 <a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
@@ -68,7 +79,10 @@
 <li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
 <li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
 <li>Create a new Pull Request</li>
-</ol>
+</ol><h2>
+<a name="not-testing-and-i-know-it" class="anchor" href="#not-testing-and-i-know-it"><span class="octicon octicon-link"></span></a>Not testing and I know it</h2>
+
+<p><img src="/assets/not-testing-and-I-know-it.jpg?raw=true" alt="Not testing and I know it" title="Hate me."></p>
         </section>
 
         <footer>
