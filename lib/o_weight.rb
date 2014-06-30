@@ -16,6 +16,8 @@ class OWeight
 
   attr_accessor :value, :unit
 
+  include Comparable
+
   def initialize(value:, unit: :gram)
     @value = BigDecimal.new(value)
     @unit = unit
