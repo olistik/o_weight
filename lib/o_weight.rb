@@ -27,13 +27,10 @@ class OWeight
     "#{value.to_f} #{formatted_unit}"
   end
 
-  def to_unit(dest_unit)
-    dest_value = value * UNITS_CONVERSION[unit] / UNITS_CONVERSION[dest_unit]
-    self.class.new(value: dest_value, unit: dest_unit)
-  end
-
-  def to_gram
-    self.class.new(value: value * UNITS_CONVERSION[unit])
+  UNITS_CONVERSION.keys.each do |unit|
+    define_method("to_#{unit}") do
+      to_unit(unit)
+    end
   end
 
   %i[+ - * /].each do |operator|
@@ -48,6 +45,11 @@ class OWeight
   end
 
   private
+    def to_unit(dest_unit)
+      dest_value = value * UNITS_CONVERSION[unit] / UNITS_CONVERSION[dest_unit]
+      self.class.new(value: dest_value, unit: dest_unit)
+    end
+
     def formatted_unit
       defined?(I18n) ? I18n.t("weight.units.#{unit}") : unit
     end
