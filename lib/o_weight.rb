@@ -33,6 +33,11 @@ class OWeight
     end
   end
 
+  def to_unit(dest_unit)
+    dest_value = value * UNITS_CONVERSION[unit] / UNITS_CONVERSION[dest_unit]
+    self.class.new(value: dest_value, unit: dest_unit)
+  end
+
   %i[+ - * /].each do |operator|
     define_method(operator) do |operand|
       operation(operator: operator, operand: operand)
@@ -45,10 +50,6 @@ class OWeight
   end
 
   private
-    def to_unit(dest_unit)
-      dest_value = value * UNITS_CONVERSION[unit] / UNITS_CONVERSION[dest_unit]
-      self.class.new(value: dest_value, unit: dest_unit)
-    end
 
     def formatted_unit
       defined?(I18n) ? I18n.t("weight.units.#{unit}") : unit
