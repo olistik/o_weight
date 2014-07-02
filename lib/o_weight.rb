@@ -56,7 +56,7 @@ class OWeight
     end
 
     def convert_operand(operand)
-      if operand.kind_of?(self.class)
+      if operand.respond_to?(:to_unit)
         operand.to_unit(unit)
       else
         operand = self.class.new(value: operand, unit: unit)
